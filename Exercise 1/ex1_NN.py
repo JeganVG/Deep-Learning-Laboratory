@@ -2,6 +2,8 @@ import torch
 
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
+import pandas as pd
+import numpy as np
 
 X, Y = datasets.load_breast_cancer(return_X_y=True)
 
@@ -46,7 +48,8 @@ class Classifier(nn.Module):
 classifier = Classifier()
 preds = classifier(X_train[:5])
 print(preds)
-
+testlos=[]
+trainlos=[]
 def TrainModel(model, loss_func, optimizer, X, Y, epochs=500):
     for i in range(epochs):
         preds = model(X) ## Make Predictions by forward pass through network
